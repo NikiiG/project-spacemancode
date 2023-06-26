@@ -1,8 +1,12 @@
 /*----constants-----*/
 const myWords = ["India", "Argentina", "Africa",",America"];
 
+
 /*----- state variables -----*/
-let player = {};
+
+player = { };
+let maxWrongGuess = 6;
+
 
 /*----- cached elements  -----*/
 const myLives = document.querySelector(".myLives");
@@ -13,15 +17,17 @@ const playAgainBtn = document.querySelector(".playagain");
 
 /*----- event listeners -----*/
 
+
+
 btnStart.addEventListener("click", function() {
     myWords.sort(function() {
      return .5 - Math.random();
     });
-    console.log(myWords);
+   // console.log(myWords);
     let theWord = myWords.shift();
     player = theWord.split("");
     buildBoard();
-    console.log(player);
+    //console.log(player);
   
   });
   
@@ -35,8 +41,17 @@ btnStart.addEventListener("click", function() {
   
       guessBoard.appendChild(div);
     
-                  
-                  
-    });
+    })};
+//aplhabet on board
+    for (let i=0;i<26;i++){
+       let alphabet = String.fromCharCode(65+i);
+  //console.log(alphabet);
+      let div = document.createElement("div");
+       div.classList.add("letter");
+
+    div.innerHTML = alphabet;
+  letters.appendChild(div);
   };
+
+  
   

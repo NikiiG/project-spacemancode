@@ -2,12 +2,14 @@
 * {
     box-sizing: border-box;
    background-color: bisque;
+
   
 }
 
 
 .container {
   animation-duration: 2s;
+ 
 }
   
    h2{
@@ -33,6 +35,7 @@
     background-color:lightgrey;
     height: 40vh;
     margin-top:0px;
+
 
   }
  
@@ -64,6 +67,19 @@
   height: 23vh;;
 
 }
+.letter {
+  display:inline-block;
+  padding:11px;
+border: 2px solid ;
+  margin-left:10px;
+  cursor:pointer;
+  font-size : 1.4em;;
+  text-align: center;
+  background-color: aliceblue;
+  margin-top: 18px;
+  
+ 
+}
 
 .mystart{
     height: 50px;
@@ -93,8 +109,10 @@
 }
 .letter2{
   display:inline-block;
-  padding:5px;
-  margin-left:10px;
-  font-size:20px;
+  padding:8px;
+  margin-left:5px;
+  font-size:1.3em;
+  color :black;
   background-color: aliceblue;
+  
 }

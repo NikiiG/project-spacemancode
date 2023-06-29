@@ -124,14 +124,14 @@
 }
 
 .message {
-  height: 14vh;
-  width: 25%;
+  height: 13vh;
+  width: 18%;
   background-color: black;
   text-align: center;
   padding-top: 9px;
   border-radius: 1vh;
   position: absolute;
-  margin-left: 90vh;
+  margin-left:280px;
   color:white;
   font-size: 20px;
   font-weight:bold;

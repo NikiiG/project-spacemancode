@@ -6,13 +6,14 @@ It's a word guess game called Spaceman. A game where player is provided with the
 Spaceman Image
 ![Spacemanscreenshot.png](Spacemanscreenshot.png)
 
-
 Technology Used:
 . HTML  
 . CSS
 . Javascript
 
 Getting Started:
+Click the Link below
+ https://nikiig.github.io/project-spacemancode/
 
 Planned Future Enhancement:
 To add categories in the  word list and animation to the game .

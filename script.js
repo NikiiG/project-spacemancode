@@ -1,57 +1,145 @@
 /*----constants-----*/
-const myWords = ["India", "Argentina", "Africa",",America"];
-
+const myWords = ["India", "Argentina", "Brazil","Spain","France"];
 
 /*----- state variables -----*/
-
-player = { };
-let maxWrongGuess = 6;
-
+let player;
+let lives;
+let word;
+let start;
 
 /*----- cached elements  -----*/
-const myLives = document.querySelector(".myLives");
 const letters = document.querySelector(".letters");
 const guessBoard = document.querySelector(".guessboard");
-const btnStart = document.querySelector(".mystart");
-const playAgainBtn = document.querySelector(".playagain");
+const btnStart = document.getElementById("start");
+const btnReset = document.getElementById("reset");
+const messageDiv = document.getElementById("message");
+const image = document.querySelector(".image");
 
 /*----- event listeners -----*/
+btnStart.addEventListener("click", startGame);
+btnReset.addEventListener("click", handleReset);
+
+init();
+
+function init() {
+    lives = 10;
+    word = "";
+    start = false;
+    buildKeyboard();
+}
+
+function handleReset() {
+    // if(start) 
+    {
+        lives = 10;
+        showLives();
+        startGame();
+        clearKeyBoard();
+        buildKeyboard();
+        document.getElementById("spaceImage").src = "https://t4.ftcdn.net/jpg/01/79/97/33/360_F_179973328_WmTgchiYSNEUWrGggispWfYdT2xLDhbZ.jpg";
+    }
+}
+
+function getWord() {
+    let index = Math.floor(Math.random() * myWords.length);
+    return myWords[index];
+}
+
+function resetBoard() {
+    guessBoard.innerHTML = "";
+}
+
+function startGame() {
+    word = getWord();
+    resetBoard();
+    buildBoard(word);
+    start = true;
+};
+
+function buildBoard(word) {
+    for (i = 0; i < word.length; i++) {
+        //console.log(word[i]);
+        let div = document.createElement("div");
+        div.classList.add("guessWordLetter")
+        div.innerText = "_";
+        div.myLetter = word[i];
+        guessBoard.appendChild(div);
+    };
+};
+
+function showLives() {
+    message.innerHTML = "Guesses Left: " + lives;
+};
+
+function showMessage(message) {
+    console.log(message);
+    messageDiv.innerHTML = message;
+}
+
+function clearKeyBoard() {
+    while (letters.lastElementChild) {
+        letters.removeChild(letters.lastElementChild);
+    }
+}
+
+function lostGame() {
+    document.getElementById("spaceImage").src = "images/spaceman.gif";
+    showMessage("<span style='color:red;background-color:white;'> LOOSE!</span><br> Word is : " + word);
+    start = false;
+
+}
+
+function buildKeyboard() {
+    for (let i = 0; i < 26; i++) {
+        let alphabet = String.fromCharCode(65 + i);
+
+        let div = document.createElement("div");
+        div.classList.add("keyBoardLetter");
+        div.innerHTML = alphabet;
+        letters.appendChild(div);
+
+        // handler function
+        div.addEventListener("click", handler);
+
+        function handler(evt) {
+            if (start) {
+                div.removeEventListener("click", handler);
+                div.classList.add("doneAlphabet");
+                console.log(lives);
+                let guess = 0;
+                let win = false;
+                let dashLetters = document.querySelectorAll(".guessWordLetter");
+
+                dashLetters.forEach(function (letter) {
+
+                    if (letter.myLetter.toUpperCase() === alphabet) {
+                        letter.innerHTML = alphabet;
+                    };
+
+                    if (letter.innerHTML != "_") {
+                        guess++;
+                    }
+                    //console.log(letter.myLetter + " counter : " + counter + " guess : " +guess);
+                    let letterLeft = dashLetters.length - guess;
+                    if (letterLeft < 1) {
+                        showMessage("<span style='color:green;background-color:white;'> WIN !</span>");
+                        start = false;
+                        win = true;
+                    }
+                    else {
+                        showLives();
+                    }
+                })
+                if (lives <= 0 && !win) {
+                    lostGame();
+                }
+                lives--;
+
+            }
+        }
+    };
+}
 
 
 
-btnStart.addEventListener("click", function() {
-    myWords.sort(function() {
-     return .5 - Math.random();
-    });
-   // console.log(myWords);
-    let theWord = myWords.shift();
-    player = theWord.split("");
-    buildBoard();
-    //console.log(player);
-  
-  });
-  
-  function buildBoard(){
-    player.forEach(function(letter){
-      //console.log(letter);
-      let div=document.createElement("div");
-      div.classList.add("letter2")
-      div.innerText="_";
-      div.myLetter =letter;
-  
-      guessBoard.appendChild(div);
-    
-    })};
-//aplhabet on board
-    for (let i=0;i<26;i++){
-       let alphabet = String.fromCharCode(65+i);
-  //console.log(alphabet);
-      let div = document.createElement("div");
-       div.classList.add("letter");
 
-    div.innerHTML = alphabet;
-  letters.appendChild(div);
-  };
-
-  
-  

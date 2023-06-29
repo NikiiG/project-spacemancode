@@ -29,7 +29,6 @@ function init() {
 }
 
 function handleReset() {
-    // if(start) 
     {
         lives = 10;
         showLives();
@@ -58,7 +57,6 @@ function startGame() {
 
 function buildBoard(word) {
     for (i = 0; i < word.length; i++) {
-        //console.log(word[i]);
         let div = document.createElement("div");
         div.classList.add("guessWordLetter")
         div.innerText = "_";
@@ -68,7 +66,7 @@ function buildBoard(word) {
 };
 
 function showLives() {
-    message.innerHTML = "Guesses Left: " + lives;
+    message.innerHTML = "Guesses Left: " + lives + "<br>Hint:[Countries]<br>";
 };
 
 function showMessage(message) {
@@ -84,7 +82,7 @@ function clearKeyBoard() {
 
 function lostGame() {
     document.getElementById("spaceImage").src = "images/spaceman.gif";
-    showMessage("<span style='color:red;background-color:white;'> LOOSE!</span><br> Word is : " + word);
+    showMessage("<span style='color:red;background-color:black;font-size:28px'> LOOSE!</span><br> Word is : " + word);
     start = false;
 
 }
@@ -119,10 +117,9 @@ function buildKeyboard() {
                     if (letter.innerHTML != "_") {
                         guess++;
                     }
-                    //console.log(letter.myLetter + " counter : " + counter + " guess : " +guess);
                     let letterLeft = dashLetters.length - guess;
                     if (letterLeft < 1) {
-                        showMessage("<span style='color:green;background-color:white;'> WIN !</span>");
+                        showMessage("<span style='color:green;background-color:black; font-size:50px;'> WIN !</span>");
                         start = false;
                         win = true;
                     }

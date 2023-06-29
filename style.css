@@ -17,7 +17,7 @@
     text-align: center;
     font-size: 50px;
     margin-top:0px;
-    text-shadow: 2px 2px 4px #000000;
+    text-shadow: 2px 2px 4px white;
     
   }
   .image{
@@ -124,16 +124,15 @@
 }
 
 .message {
-  height: 10vh;
-  width: 340px;
-  background-color: aliceblue;
-  color: rgb(0, 0, 0);
+  height: 14vh;
+  width: 25%;
+  background-color: black;
   text-align: center;
   padding-top: 9px;
   border-radius: 1vh;
   position: absolute;
-  margin-left: 75vh;
-  color:black;
+  margin-left: 90vh;
+  color:white;
   font-size: 20px;
   font-weight:bold;
 }

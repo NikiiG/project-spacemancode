@@ -1,8 +1,8 @@
 /*----constants-----*/
-const myWords = ["India", "Argentina", "Brazil","Spain","France"];
+const myWords = ["India", "Argentina", "Brazil", "Spain", "France"];
 
 /*----- state variables -----*/
-let player;
+
 let lives;
 let word;
 let start;
@@ -70,7 +70,6 @@ function showLives() {
 };
 
 function showMessage(message) {
-    console.log(message);
     messageDiv.innerHTML = message;
 }
 
@@ -103,7 +102,6 @@ function buildKeyboard() {
             if (start) {
                 div.removeEventListener("click", handler);
                 div.classList.add("doneAlphabet");
-                console.log(lives);
                 let guess = 0;
                 let win = false;
                 let dashLetters = document.querySelectorAll(".guessWordLetter");
